@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Facial Expression Recognition</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main class="app">
+  <header>
+    <h1>Facial Expression Recognition</h1>
+    <p>Real-time facial expression detection</p>
+  </header>
+
+  <div class="grid">
+    <section class="card left">
+      <div class="loader" id="loader">
+        <ul id="steps">
+          <li data-step="mediapipe">Loading MediaPipe face detector...</li>
+          <li data-step="classifier">Loading Q4 expression classifier...</li>
+          <li data-step="engine">Preparing inference engine...</li>
+          <li data-step="ready">System ready.</li>
+        </ul>
+        <div class="bar" id="loadBar"><span></span></div>
+        <p class="error" id="error" role="alert" hidden></p>
+      </div>
+
+      <div class="stage" id="stage">
+        <video id="video" playsinline muted></video>
+        <canvas id="overlay"></canvas>
+        <div class="placeholder" id="placeholder">Camera is off</div>
+      </div>
+
+      <div class="controls">
+        <button id="startBtn" disabled>Start Camera</button>
+        <button id="stopBtn" class="secondary" disabled>Stop Camera</button>
+      </div>
+
+      <div class="prediction" aria-live="polite">
+        <div class="label" id="mainLabel">—</div>
+        <div class="conf" id="mainConf"></div>
+      </div>
+      <p class="status" id="status">Waiting for camera...</p>
+    </section>
+
+    <aside class="card right">
+      <h2>Expression Analysis</h2>
+      <ul class="scores" id="scores"></ul>
+    </aside>
+  </div>
+</main>
+<script type="module" src="script.js"></script>
+</body>
+</html>
